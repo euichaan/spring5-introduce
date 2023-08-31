@@ -14,4 +14,8 @@ public class ChangePasswordService {
 
 		memberDao.update(member);
 	}
+
+	public void setMemberDao(final MemberDao memberDao) {
+		this.memberDao = memberDao;
+	}
 }
