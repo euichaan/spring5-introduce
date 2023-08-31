@@ -4,7 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import me.euichan.assembler.Assembler;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import me.euichan.config.AppCtx;
 import me.euichan.spring.ChangePasswordService;
 import me.euichan.spring.DuplicateMemberException;
 import me.euichan.spring.MemberNotFoundException;
@@ -14,9 +17,10 @@ import me.euichan.spring.WrongIdPasswordException;
 
 public class MainForAssembler {
 
-	private static Assembler assembler = new Assembler();
+	private static ApplicationContext ctx = null;
 
 	public static void main(String[] args) throws IOException {
+		ctx = new AnnotationConfigApplicationContext(AppCtx.class);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
 			System.out.println("명령어를 입력하세요:");
@@ -41,7 +45,8 @@ public class MainForAssembler {
 			printHelp();
 			return;
 		}
-		MemberRegisterService memberRegisterService = assembler.getRegSvc();
+
+		MemberRegisterService memberRegisterService = ctx.getBean("memberRegisterService", MemberRegisterService.class);
 		RegisterRequest req = new RegisterRequest();
 		req.setEmail(arg[1]);
 		req.setName(arg[2]);
@@ -66,7 +71,8 @@ public class MainForAssembler {
 			return;
 		}
 
-		ChangePasswordService changePasswordService = assembler.getPwdSvc();
+		ChangePasswordService changePasswordService = ctx.getBean("changePasswordService", ChangePasswordService.class);
+
 		try {
 			changePasswordService.changePassword(arg[1], arg[2], arg[3]);
 			System.out.println("암호를 변경했습니다.\n");
