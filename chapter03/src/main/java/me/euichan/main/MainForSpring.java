@@ -10,12 +10,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import me.euichan.config.AppCtx;
 import me.euichan.spring.ChangePasswordService;
 import me.euichan.spring.DuplicateMemberException;
+import me.euichan.spring.MemberListPrinter;
 import me.euichan.spring.MemberNotFoundException;
 import me.euichan.spring.MemberRegisterService;
 import me.euichan.spring.RegisterRequest;
 import me.euichan.spring.WrongIdPasswordException;
 
-public class MainForAssembler {
+public class MainForSpring {
 
 	private static ApplicationContext ctx = null;
 
@@ -34,6 +35,9 @@ public class MainForAssembler {
 				continue;
 			} else if (command.startsWith("change ")) {
 				processChangeCommand(command.split(" "));
+				continue;
+			} else if (command.equals("list")) {
+				processListCommand();
 				continue;
 			}
 			printHelp();
@@ -81,6 +85,11 @@ public class MainForAssembler {
 		} catch (WrongIdPasswordException e) {
 			System.out.println("이메일과 암호가 일치하지 않습니다.\n");
 		}
+	}
+
+	private static void processListCommand() {
+		MemberListPrinter listPrinter = ctx.getBean("listPrinter", MemberListPrinter.class);
+		listPrinter.printAll();
 	}
 
 	private static void printHelp() {
