@@ -9,6 +9,7 @@ import me.euichan.spring.MemberInfoPrinter;
 import me.euichan.spring.MemberListPrinter;
 import me.euichan.spring.MemberPrinter;
 import me.euichan.spring.MemberRegisterService;
+import me.euichan.spring.VersionPrinter;
 
 @Configuration
 public class AppCtx {
@@ -46,5 +47,13 @@ public class AppCtx {
 		memberInfoPrinter.setMemberDao(memberDao());
 		memberInfoPrinter.setPrinter(memberPrinter());
 		return memberInfoPrinter;
+	}
+
+	@Bean
+	public VersionPrinter versionPrinter() {
+		VersionPrinter versionPrinter = new VersionPrinter();
+		versionPrinter.setMajorVersion(5);
+		versionPrinter.setMinorVersion(0);
+		return versionPrinter;
 	}
 }
