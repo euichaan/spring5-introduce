@@ -2,12 +2,15 @@ package me.euichan.spring;
 
 import java.time.LocalDateTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class MemberRegisterService {
 
+	@Autowired
 	private MemberDao memberDao;
 
-	public MemberRegisterService(final MemberDao memberDao) {
-		this.memberDao = memberDao;
+	public MemberRegisterService() {
+
 	}
 
 	public Long regist(final RegisterRequest req) {
