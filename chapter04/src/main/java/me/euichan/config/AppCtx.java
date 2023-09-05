@@ -10,6 +10,7 @@ import me.euichan.spring.MemberInfoPrinter;
 import me.euichan.spring.MemberListPrinter;
 import me.euichan.spring.MemberPrinter;
 import me.euichan.spring.MemberRegisterService;
+import me.euichan.spring.MemberSummaryPrinter;
 import me.euichan.spring.VersionPrinter;
 
 @Configuration
@@ -42,8 +43,8 @@ public class AppCtx {
 	}
 
 	@Bean
-	public MemberPrinter memberPrinter2() {
-		return new MemberPrinter();
+	public MemberSummaryPrinter memberPrinter2() {
+		return new MemberSummaryPrinter();
 	}
 
 	@Bean
