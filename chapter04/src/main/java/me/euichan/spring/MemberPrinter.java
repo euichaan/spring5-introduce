@@ -1,6 +1,7 @@
 package me.euichan.spring;
 
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,7 +20,7 @@ public class MemberPrinter {
 	}
 
 	@Autowired(required = false)
-	public void setDateTimeFormatter(DateTimeFormatter dateTimeFormatter) {
-		this.dateTimeFormatter = dateTimeFormatter;
+	public void setDateTimeFormatter(Optional<DateTimeFormatter> dateTimeFormatter) {
+		this.dateTimeFormatter = dateTimeFormatter.orElse(null);
 	}
 }
