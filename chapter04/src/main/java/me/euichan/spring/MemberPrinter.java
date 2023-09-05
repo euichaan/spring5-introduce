@@ -2,11 +2,16 @@ package me.euichan.spring;
 
 import java.time.format.DateTimeFormatter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 
 public class MemberPrinter {
 
 	private DateTimeFormatter dateTimeFormatter;
+
+	public MemberPrinter() {
+		this.dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
+	}
 
 	public void print(Member member) {
 		if (dateTimeFormatter == null) {
@@ -18,6 +23,7 @@ public class MemberPrinter {
 		}
 	}
 
+	@Autowired
 	public void setDateTimeFormatter(@Nullable DateTimeFormatter dateTimeFormatter) {
 		this.dateTimeFormatter = dateTimeFormatter;
 	}
