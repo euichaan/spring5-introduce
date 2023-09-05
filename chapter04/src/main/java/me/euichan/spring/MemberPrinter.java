@@ -1,9 +1,9 @@
 package me.euichan.spring;
 
 import java.time.format.DateTimeFormatter;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 
 public class MemberPrinter {
 
@@ -20,7 +20,7 @@ public class MemberPrinter {
 	}
 
 	@Autowired(required = false)
-	public void setDateTimeFormatter(Optional<DateTimeFormatter> dateTimeFormatter) {
-		this.dateTimeFormatter = dateTimeFormatter.orElse(null);
+	public void setDateTimeFormatter(@Nullable DateTimeFormatter dateTimeFormatter) {
+		this.dateTimeFormatter = dateTimeFormatter;
 	}
 }
