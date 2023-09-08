@@ -2,3 +2,4 @@ rootProject.name = 'spring5-introduce'
 include('chapter02')
 include('chapter03')
 include('chapter04')
+include('chapter05')
