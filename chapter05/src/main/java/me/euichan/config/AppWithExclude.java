@@ -13,7 +13,8 @@ import me.euichan.spring.MemberPrinter;
 
 @Configuration
 @ComponentScan(basePackages = {"me.euichan.spring"},
-               excludeFilters = @Filter(type = FilterType.ASPECTJ, pattern = "spring.*Dao"))
+               excludeFilters = @Filter(type = FilterType.ANNOTATION,
+			   classes = {NoProduct.class, ManualBean.class}))
 public class AppWithExclude {
 
 	@Bean
