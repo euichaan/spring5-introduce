@@ -1,4 +1,4 @@
-package me.euichan.chap02;
+package me.euichan.spring;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

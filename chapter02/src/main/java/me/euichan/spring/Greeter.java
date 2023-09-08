@@ -1,4 +1,4 @@
-package me.euichan.chap02;
+package me.euichan.spring;
 
 public class Greeter {
 
