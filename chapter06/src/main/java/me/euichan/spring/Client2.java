@@ -1,5 +1,8 @@
 package me.euichan.spring;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 public class Client2 {
 
 	private String host;
@@ -8,6 +11,7 @@ public class Client2 {
 		this.host = host;
 	}
 
+	@PostConstruct
 	public void connect() {
 		System.out.println("Client2.connect 실행");
 	}
@@ -16,6 +20,7 @@ public class Client2 {
 		System.out.println("Client send() to " + host);
 	}
 
+	@PreDestroy
 	public void close() {
 		System.out.println("Client2.close 실행");
 	}
