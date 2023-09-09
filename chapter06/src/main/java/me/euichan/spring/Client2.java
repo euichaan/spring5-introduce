@@ -17,7 +17,7 @@ public class Client2 {
 	}
 
 	public void send() {
-		System.out.println("Client send() to " + host);
+		System.out.println("Client2 send() to " + host);
 	}
 
 	@PreDestroy
