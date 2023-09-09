@@ -8,7 +8,7 @@ public class Main {
 		// 설정 정보를 이용해서 빈 객체를 생성한다.
 		AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppCtx.class);
 		// 빈 객체를 제공한다.
-		final Client client = ac.getBean(Client.class);
+		final Client2 client = ac.getBean(Client2.class);
 		client.send();
 		ac.close();
 	}
