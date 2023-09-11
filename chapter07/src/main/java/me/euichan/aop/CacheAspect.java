@@ -6,7 +6,6 @@ import java.util.Map;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 
 @Aspect
@@ -15,11 +14,7 @@ public class CacheAspect {
 
 	private Map<Long, Object> cache = new HashMap<>();
 
-	@Pointcut("execution(public * me.euichan.aop..*(long))")
-	public void cacheTarget() {
-	}
-
-	@Around("cacheTarget()")
+	@Around("CommonPointcut.commonTarget()")
 	public Object execute(ProceedingJoinPoint joinPoint) throws Throwable {
 		Long num = (Long) joinPoint.getArgs()[0];
 		if (cache.containsKey(num)) {
