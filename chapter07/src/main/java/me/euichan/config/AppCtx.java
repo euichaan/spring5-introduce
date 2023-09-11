@@ -9,7 +9,7 @@ import me.euichan.aop.ExeTimeAspect;
 import me.euichan.aop.RecCalculator;
 
 @Configuration
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class AppCtx {
 
 	@Bean
