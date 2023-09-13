@@ -4,6 +4,8 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import me.euichan.spring.MemberDao;
+
 @Configuration
 public class AppCtx {
 
@@ -18,5 +20,10 @@ public class AppCtx {
 		dataSource.setInitialSize(2);
 		dataSource.setMaxActive(10);
 		return dataSource;
+	}
+
+	@Bean
+	public MemberDao memberDao() {
+		return new MemberDao(dataSource());
 	}
 }
