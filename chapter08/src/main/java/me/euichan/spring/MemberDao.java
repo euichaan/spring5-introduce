@@ -34,7 +34,9 @@ public class MemberDao {
 	}
 
 	public void update(Member member) {
-
+		jdbcTemplate.update(
+			"update MEMBER set NAME = ?, PASSWORD = ? where EMAIL = ?",
+			member.getName(), member.getPassword(), member.getEmail());
 	}
 
 	public List<Member> selectAll() {
