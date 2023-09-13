@@ -19,6 +19,9 @@ public class AppCtx {
 		dataSource.setPassword("a87524626");
 		dataSource.setInitialSize(2);
 		dataSource.setMaxActive(10);
+		dataSource.setTestWhileIdle(true); // 유휴 커넥션 유효한지 여부 검사
+		dataSource.setMinEvictableIdleTimeMillis(1000 * 60 * 3); // 최소 유휴 시간 3분
+		dataSource.setTimeBetweenEvictionRunsMillis(1000 * 10); // 10초 주기
 		return dataSource;
 	}
 
