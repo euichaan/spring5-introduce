@@ -1,9 +1,13 @@
 package me.euichan.spring;
 
+import java.sql.PreparedStatement;
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 public class MemberDao {
 
@@ -30,7 +34,18 @@ public class MemberDao {
 	}
 
 	public void insert(Member member) {
-
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		jdbcTemplate.update(con -> {
+			PreparedStatement pstmt = con.prepareStatement(
+				"insert into MEMBER (EMAIL, PASSWORD, NAME, REGDATE)" + "values (?, ?, ?, ?)", new String[] {"ID"});
+			pstmt.setString(1, member.getEmail());
+			pstmt.setString(2, member.getPassword());
+			pstmt.setString(3, member.getName());
+			pstmt.setTimestamp(4, Timestamp.valueOf(member.getRegisterDateTime()));
+			return pstmt;
+		}, keyHolder);
+		Number keyValue = keyHolder.getKey();
+		member.setId(keyValue.longValue());
 	}
 
 	public void update(Member member) {
