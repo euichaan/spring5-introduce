@@ -1,0 +1,13 @@
+apply plugin: 'java'
+apply plugin: 'war'
+
+dependencies {
+    implementation 'javax.servlet:javax.servlet-api:3.1.0'
+    implementation 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.2-b02'
+    implementation 'javax.servlet:jstl:1.2'
+    implementation 'org.springframework:spring-webmvc:5.0.2.RELEASE' // "springframework"가 오타입니다.
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.4'
+}
